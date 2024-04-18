@@ -1,9 +1,9 @@
-// MultiStepForm.js
 import React, { useState } from 'react';
 import PersonalDetailsForm from './PersonalDetailsForm';
 import EducationDetailsForm from './EducationDetailsForm';
 import CertificationForm from './CertificationForm';
 import AddressForm from './AddressForm';
+import Dashboard from './Dashboard';
 import './MultiStepForm.css';
 
 const MultiStepForm = () => {
@@ -24,22 +24,23 @@ const MultiStepForm = () => {
       case 3:
         return <CertificationForm onNext={nextStep} />;
       case 4:
-        return <AddressForm onSubmit={nextStep} />;
+        return <AddressForm onSubmit={submitForm} />;
       default:
         return null;
     }
   };
 
-  const calculateProgress = () => {
-    return ((step - 1) / 4) * 100;
+  const submitForm = (data) => {
+    setFormData({ ...formData, ...data });
+    setStep(5);
   };
 
   return (
     <div>
       <div className="progress-bar">
-        <div className="progress" style={{ width: `${calculateProgress()}%` }}></div>
+        <div className="progress" style={{ width: `${((step - 1) / 4) * 100}%` }}></div>
       </div>
-      {renderFormStep()}
+      {step === 5 ? <Dashboard formData={formData} /> : renderFormStep()}
     </div>
   );
 };
