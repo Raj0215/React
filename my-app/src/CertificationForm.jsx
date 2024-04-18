@@ -1,4 +1,3 @@
-// CertificationForm.js
 import React, { useState } from 'react';
 import './CertificationForm.css';
 

@@ -1,4 +1,3 @@
-// PersonalDetailsForm.js
 import React, { useState } from 'react';
 import './PersonalDetailsForm.css';
 

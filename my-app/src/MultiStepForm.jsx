@@ -1,4 +1,3 @@
-// MultiStepForm.js
 import React, { useState } from 'react';
 import PersonalDetailsForm from './PersonalDetailsForm';
 import EducationDetailsForm from './EducationDetailsForm';

@@ -1,4 +1,3 @@
-// EducationDetailsForm.js
 import React, { useState } from 'react';
 import './EducationDetailsForm.css';
 
