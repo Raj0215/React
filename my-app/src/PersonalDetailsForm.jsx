@@ -6,13 +6,15 @@ const PersonalDetailsForm = ({ onNext }) => {
     firstName: '',
     lastName: '',
     age: '',
+    image: null, 
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const newValue = type === 'file' ? e.target.files[0] : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: newValue,
     });
   };
 
@@ -52,6 +54,16 @@ const PersonalDetailsForm = ({ onNext }) => {
             name="age"
             value={formData.age}
             onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Upload Image:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleChange}
+            accept="image/*"
             required
           />
         </div>

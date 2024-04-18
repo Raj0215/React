@@ -1,4 +1,3 @@
-// Dashboard.js
 import React from 'react';
 
 const Dashboard = ({ formData, onUpdate, onDelete }) => {
@@ -9,6 +8,12 @@ const Dashboard = ({ formData, onUpdate, onDelete }) => {
       <p>First Name: {formData.firstName}</p>
       <p>Last Name: {formData.lastName}</p>
       <p>Age: {formData.age}</p>
+      {formData.image && (
+        <div className="image-container">
+          <h2>Uploaded Image:</h2>
+          <img src={URL.createObjectURL(formData.image)} alt="Uploaded" className="uploaded-image" />
+        </div>
+      )}
       <h2>Education Details</h2>
       <p>Degree: {formData.degree}</p>
       <p>Institution: {formData.institution}</p>

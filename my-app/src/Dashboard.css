@@ -27,4 +27,11 @@
   .dashboard button:active {
     background-color: #004080;
   }
+  .image-container {
+    margin-top: 10px;
+  }
   
+  .uploaded-image {
+    max-width: 20%; 
+    height: auto; 
+  }
