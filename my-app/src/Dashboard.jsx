@@ -1,6 +1,7 @@
+// Dashboard.js
 import React from 'react';
-import './Dashboard.css';
-const Dashboard = ({ formData }) => {
+
+const Dashboard = ({ formData, onUpdate, onDelete }) => {
   return (
     <div>
       <h1>Dashboard</h1>
@@ -19,6 +20,7 @@ const Dashboard = ({ formData }) => {
       <p>City: {formData.city}</p>
       <p>State: {formData.state}</p>
       <p>ZIP Code: {formData.zip}</p>
+      <button onClick={onDelete}>Delete</button>
     </div>
   );
 };

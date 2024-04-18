@@ -1,3 +1,4 @@
+// MultiStepForm.js
 import React, { useState } from 'react';
 import PersonalDetailsForm from './PersonalDetailsForm';
 import EducationDetailsForm from './EducationDetailsForm';
@@ -8,11 +9,24 @@ import './MultiStepForm.css';
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(JSON.parse(localStorage.getItem('formData')) || {});
 
   const nextStep = (data) => {
-    setFormData({ ...formData, ...data });
+    const updatedFormData = { ...formData, ...data };
+    setFormData(updatedFormData);
+    localStorage.setItem('formData', JSON.stringify(updatedFormData));
     setStep(step + 1);
+  };
+
+  const updateFormData = (data) => {
+    const updatedFormData = { ...formData, ...data };
+    setFormData(updatedFormData);
+    localStorage.setItem('formData', JSON.stringify(updatedFormData));
+  };
+
+  const deleteFormData = () => {
+    setFormData({});
+    localStorage.removeItem('formData');
   };
 
   const renderFormStep = () => {
@@ -31,7 +45,9 @@ const MultiStepForm = () => {
   };
 
   const submitForm = (data) => {
-    setFormData({ ...formData, ...data });
+    const updatedFormData = { ...formData, ...data };
+    setFormData(updatedFormData);
+    localStorage.setItem('formData', JSON.stringify(updatedFormData));
     setStep(5);
   };
 
@@ -40,7 +56,15 @@ const MultiStepForm = () => {
       <div className="progress-bar">
         <div className="progress" style={{ width: `${((step - 1) / 4) * 100}%` }}></div>
       </div>
-      {step === 5 ? <Dashboard formData={formData} /> : renderFormStep()}
+      {step === 5 ? (
+        <Dashboard
+          formData={formData}
+          onUpdate={() => updateFormData({})}
+          onDelete={deleteFormData}
+        />
+      ) : (
+        renderFormStep()
+      )}
     </div>
   );
 };
