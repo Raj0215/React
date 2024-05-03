@@ -1,3 +1,31 @@
-h1{
+/* App.css */
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .welcome-message {
     text-align: center;
-}
+  }
+  
+  .welcome-message h1 {
+    margin-bottom: 20px;
+  }
+  
+  
+  button {
+    width: 100%;
+    padding: 8px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #000000;
+  }  
